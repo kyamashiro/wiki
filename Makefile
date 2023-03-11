@@ -4,6 +4,9 @@ start:
 stop:
 	docker compose stop
 
+restart:
+	docker compose restart
+
 remove:
 	docker compose stop
 	docker compose rm
@@ -17,11 +20,8 @@ mysql/bash:
 migrate/up:
 	docker exec -ti go sh -c "sql-migrate up -env=development"
 
-"migrate/down":
+migrate/down:
 	docker exec -ti go sh -c "sql-migrate down -env=development"
-
-migrate/test:
-	sql-migrate up -env=test
 
 migrate/status:
 	docker exec -ti go sh -c "sql-migrate status"
